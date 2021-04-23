@@ -3,9 +3,16 @@
 <h2>Aggiungi il prodotto</h2>
 <mat-form-field [formGroup]="prodottoForm" appearance="fill">
   <mat-label>
-    Nome:
+    Nome
   </mat-label>
     <input matInput type="text" formControlName="nome"  placeholder="Nome">
+</mat-form-field>
+<br/>
+<mat-form-field [formGroup]="prodottoForm" appearance="fill">
+  <mat-label>
+    Immagine
+  </mat-label>
+    <input matInput type="text" formControlName="immagine"  placeholder="inserisci URL">
 </mat-form-field>
   <br/>
   <mat-form-field [formGroup]="prodottoForm" appearance="fill">
@@ -53,7 +60,10 @@
   <table mat-table [dataSource]="dataSource" matSort>
 
 
-
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Image </th>
+      <td mat-cell *matCellDef="let row"> <img src="{{row.imagePath}}" alt="{{row.nome}}" style="width:150px;height:100px;"> </td>
+    </ng-container>
 
     <!-- ID Column -->
     <ng-container matColumnDef="id">
@@ -117,3 +127,4 @@
 <span><button mat-flat-button color="accent" (click)='updateQuantita()' [disabled]="isButtonEnable">Aumenta quantità disponibile di una unità</button></span>
 
 
+<app-footer></app-footer>

@@ -1,11 +1,11 @@
 
-<button mat-flat-button routerLink="admin" >Admin</button>
+<button mat-flat-button routerLink="admin/utenti" >Admin</button>
 <button mat-flat-button routerLink="user/shop" >User</button>
 <button mat-flat-button (click)="logout()" >LogOut</button>
+<mat-card class="spaz"><img mat-card-image src="https://imgur.com/zeids4W.jpg" alt="CalabrianShop" style="width:800px;height:145px;" ></mat-card>
 <mat-card>
   <body>
   <mat-card-header>
-
     <mat-card-title style="text-align: center;" ><h1><span>"NUOVI</span><span>ARRIVI"</span></h1></mat-card-title>
     <mat-card-subtitle>
     </mat-card-subtitle>
@@ -13,9 +13,11 @@
 </body>
 </mat-card>
 
-<mat-grid-list cols="2" rowHeight="2:1">
-  <mat-grid-tile >{{prodotti[0].nome}} <span><button> vai allo shop-></button></span></mat-grid-tile>
-  <mat-grid-tile >{{prodotti[1].nome}}</mat-grid-tile>
-  <mat-grid-tile >{{prodotti[2].nome}}</mat-grid-tile>
-  <mat-grid-tile >{{prodotti[3].nome}}</mat-grid-tile>
+<mat-grid-list cols="2" rowHeight="3:1">
+
+  <mat-grid-tile ><img src="{{prodotti[0].imagePath}}" alt="{{prodotti[0].nome}}" style="width:200px;height:200px;"> <span class="spazio"><button mat-flat-button (click)="goToShop()"> vai allo shop-></button></span></mat-grid-tile>
+  <mat-grid-tile ><img src="{{prodotti[1].imagePath}}" alt="{{prodotti[1].nome}}" style="width:200px;height:200px;"><span class="spazio"><button mat-flat-button (click)="goToShop()"> vai allo shop-></button></span></mat-grid-tile>
+  <mat-grid-tile ><img src="{{prodotti[2].imagePath}}" alt="{{prodotti[2].nome}}" style="width:200px;height:200px;"><span class="spazio"><button mat-flat-button (click)="goToShop()"> vai allo shop-></button></span></mat-grid-tile>
+  <mat-grid-tile ><img src="{{prodotti[3].imagePath}}" alt="{{prodotti[3].nome}}" style="width:200px;height:200px;"><span class="spazio"><button mat-flat-button (click)="goToShop()"> vai allo shop-></button></span></mat-grid-tile>
 </mat-grid-list>
+<app-footer></app-footer>

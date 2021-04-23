@@ -31,6 +31,7 @@ import { CarrelloComponent, DialogDataInd } from './carrello/carrello.component'
 import { OrdiniComponent } from './ordini/ordini.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
     UserComponent,
     CarrelloComponent,
     OrdiniComponent,
-    DialogDataInd
+    DialogDataInd,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

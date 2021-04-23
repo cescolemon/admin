@@ -1,10 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { KeycloakService } from 'keycloak-angular';
-import { environment } from 'src/environments/environment';
 import { Prodotto } from '../model/prodotto';
-import { ProdottiService } from '../services/prodotti.service';
+
 import { ShopService } from '../services/shop.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class ManagerComponent implements OnInit {
 
 prodotti: Prodotto[];
 
-  constructor(private keycloakService: KeycloakService, private sservice : ShopService) {}
+  constructor(private keycloakService: KeycloakService, private sservice : ShopService,private router: Router) {}
 
   ngOnInit(): void {
     this.sservice.getProdotti().subscribe(uts => {
@@ -25,6 +24,15 @@ prodotti: Prodotto[];
 }
 logout() {
   this.keycloakService.logout();
+}
+
+
+goToShop($myParam: string = ''): void {
+  const navigationDetails: string[] = ['home/user/shop'];
+  if($myParam.length) {
+    navigationDetails.push($myParam);
+  }
+  this.router.navigate(navigationDetails);
 }
 
 }

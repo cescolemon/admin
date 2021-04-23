@@ -24,6 +24,7 @@
       <div class="col-md-8" *ngIf="item">{{item.prodotto.nome}} x {{item.quantita}}</div>
                 <div class="col-md-4" *ngIf="item"><strong>€{{item.quantita*item.prodotto.prezzo}}</strong></div>
     </li>
+    <h3>Totale: {{carrello.totale}} €</h3>
     <button mat-menu-item (click)="goToCart()">Vai al Carrello</button>
     <button mat-menu-item (click)="emptyCart()">Elimina Carrello</button>
   </mat-menu>

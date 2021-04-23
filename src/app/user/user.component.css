@@ -8,9 +8,10 @@
 .spazio {
   margin-right: 12px;
 }
-h2 {
 
-  font-size: 30px;
+h2 {
+  text-shadow: 2px 2px #363636;
+  font-size: 35px;
 }
 
 

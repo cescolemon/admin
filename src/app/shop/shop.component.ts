@@ -31,7 +31,7 @@ export class ShopComponent implements OnInit {
   expandedElement: Prodotto | null;
   dataSource: MatTableDataSource<Prodotto>;
 
-  dc = ['imageUrl', 'nome', 'categoria', 'prezzo', 'venditore'];
+  dc = ['nome', 'categoria', 'prezzo', 'venditore'];
 
   @ViewChild(MatTable) table: MatTable<any>;
   @ViewChild(MatPaginator) paginator: MatPaginator;

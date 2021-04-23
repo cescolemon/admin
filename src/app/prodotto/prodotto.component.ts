@@ -25,7 +25,7 @@ export class ProdottoComponent implements OnInit {
 @ViewChild(MatSort) sort: MatSort;
 
 dataSource: MatTableDataSource<Prodotto>;
-dc =['select','id','nome','categoria','quantita','prezzo','venditore'];
+dc =['select','image','id','nome','categoria','quantita','prezzo','venditore'];
 
 
   constructor(private pservice : ProdottiService,
@@ -50,6 +50,7 @@ dc =['select','id','nome','categoria','quantita','prezzo','venditore'];
     this.prodottoForm.get('prezzo')!.valueChanges.subscribe(val => {this.prodotto.prezzo = val; } );
     this.prodottoForm.get('venditore')!.valueChanges.subscribe(val => {this.prodotto.venditore = val; } );
     this.prodottoForm.get('descrizione')!.valueChanges.subscribe(val => {this.prodotto.descrizione = val; } );
+    this.prodottoForm.get('immagine')!.valueChanges.subscribe(val => {this.prodotto.imagePath = val; } );
     this.refresh();
 
 
@@ -71,7 +72,8 @@ dc =['select','id','nome','categoria','quantita','prezzo','venditore'];
     quantita: new FormControl('', [Validators.required]),
     prezzo: new FormControl('', [Validators.required]),
     venditore: new FormControl('', [Validators.required]),
-    descrizione: new FormControl('', [Validators.required])
+    descrizione: new FormControl('', [Validators.required]),
+    immagine: new FormControl('', [Validators.required])
   });
 
 
@@ -87,6 +89,7 @@ dc =['select','id','nome','categoria','quantita','prezzo','venditore'];
     pr.prezzo= this.prodottoForm.value.prezzo;
     pr.venditore=this.prodottoForm.value.venditore;
     pr.descrizione=this.prodottoForm.value.descrizione;
+    pr.imagePath=this.prodottoForm.value.immagine;
     this.pservice.addProdotto(pr).subscribe(x => {this.router.navigateByUrl('home/admin/prodotti'), this.refresh()});
     console.log(this.prodotto);
 

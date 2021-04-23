@@ -40,6 +40,7 @@ export class ShopService implements Sservice {
     prodttoInCarr.setProdotto(prod);
     prodttoInCarr.setQuantita(qnt);
     prodttoInCarr.setId(0);
+    prodttoInCarr.subTotale=qnt*prodttoInCarr.prodotto.prezzo;
     console.log(prodttoInCarr.prodotto.nome+","+prodttoInCarr.prodotto.quantita+",       ->>>>"+prodttoInCarr.prodotto.id);
     return this.http.post(this.shopUrl+'/addtocart', prodttoInCarr,httpOptions);
   }

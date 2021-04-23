@@ -1,0 +1,13 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.stile{
+  font-size:15px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+  font-family: 'Courier New', Courier, monospace;
+
+}
