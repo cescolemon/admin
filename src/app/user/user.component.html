@@ -1,0 +1,38 @@
+
+
+
+<mat-toolbar color="primary">
+
+  <button mat-fab color="warn" aria-label="Example home icon" routerLink="/">
+    <mat-icon>home</mat-icon>
+  </button>
+  <body class="mat-typography" ><h2 >CalabrianShop</h2></body>
+    <span class="example-spacer"></span>
+    <button class="btn effect01" target="_blank" (click)="goToShop()">Shop</button>
+    <span class="spazio"></span>
+ <button class="btn effect01" target="_blank" (click)="goToOrder()" >
+  Ordini
+    </button>
+    <span class="spazio"></span>
+  <button class="btn effect01" target="_blank" (click)="logout()" >
+   LogOut
+     </button>
+    <span class="spazio"></span>
+  <button mat-button [matMenuTriggerFor]="menu"> <mat-icon class="size-24" svgIcon="carrel">Carrello</mat-icon><span class="dist"> {{carrello.totNum}}</span></button>
+  <mat-menu #menu="matMenu">
+    <li *ngFor="let item of carrello.prodotti">
+      <div class="col-md-8" *ngIf="item">{{item.prodotto.nome}} x {{item.quantita}}</div>
+                <div class="col-md-4" *ngIf="item"><strong>€{{item.quantita*item.prodotto.prezzo}}</strong></div>
+    </li>
+    <button mat-menu-item (click)="goToCart()">Vai al Carrello</button>
+    <button mat-menu-item (click)="emptyCart()">Elimina Carrello</button>
+  </mat-menu>
+
+
+
+</mat-toolbar>
+
+
+
+
+

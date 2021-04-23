@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Inserisci l'indirizzo di spedizione</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Indirizzo</mat-label>
+    <input matInput [(ngModel)]="data.indirizzo">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Torna indietro</button>
+  <button mat-button [mat-dialog-close]="data.indirizzo" cdkFocusInitial>Ok</button>
+</div>

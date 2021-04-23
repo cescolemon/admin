@@ -1,0 +1,119 @@
+
+<app-admin></app-admin>
+<h2>Aggiungi il prodotto</h2>
+<mat-form-field [formGroup]="prodottoForm" appearance="fill">
+  <mat-label>
+    Nome:
+  </mat-label>
+    <input matInput type="text" formControlName="nome"  placeholder="Nome">
+</mat-form-field>
+  <br/>
+  <mat-form-field [formGroup]="prodottoForm" appearance="fill">
+  <mat-label>
+    Categoria
+  </mat-label>
+    <input matInput type="text" formControlName="categoria" >
+</mat-form-field>
+  <br/>
+  <mat-form-field [formGroup]="prodottoForm" appearance="fill">
+  <mat-label>
+    Quantita
+  </mat-label>
+    <input matInput type="number" formControlName="quantita">
+</mat-form-field>
+  <br/>
+  <mat-form-field [formGroup]="prodottoForm" appearance="fill">
+  <mat-label>
+    Prezzo
+  </mat-label>
+    <input matInput type="text" formControlName="prezzo">
+</mat-form-field>
+  <br/>
+  <mat-form-field [formGroup]="prodottoForm" appearance="fill">
+  <mat-label>
+   Venditore
+  </mat-label>
+    <input matInput type="text" formControlName="venditore">
+</mat-form-field>
+<br/>
+<mat-form-field [formGroup]="prodottoForm" appearance="fill">
+<mat-label>
+ Descrizione
+</mat-label>
+  <textarea matInput formControlName="descrizione"></textarea>
+</mat-form-field>
+<br/>
+
+<button mat-flat-button (click)='add()' [disabled]="!prodottoForm.valid" >Aggiungi</button>
+
+
+<h2>Prodotti disponibili:</h2>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+
+
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+      <td mat-cell *matCellDef="let row"> {{row.nome}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="categoria">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
+      <td mat-cell *matCellDef="let row"> {{row.categoria}} </td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="quantita">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantita </th>
+      <td mat-cell *matCellDef="let row"> {{row.quantita}} </td>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="prezzo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Prezzo </th>
+      <td mat-cell *matCellDef="let row"> {{row.prezzo}} € </td>
+    </ng-container>
+
+    <ng-container matColumnDef="venditore">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Venditore </th>
+      <td mat-cell *matCellDef="let row"> {{row.venditore}} </td>
+    </ng-container>
+
+
+<!-- CHECKBOX COLUMN -->
+
+<ng-container matColumnDef="select">
+  <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+              [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()">Seleziona</mat-checkbox>
+  </th>
+  <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+              (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)"></mat-checkbox>
+  </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="dc"></tr>
+<tr mat-row *matRowDef="let row; columns: dc;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+
+</div>
+
+<button mat-flat-button color="accent" (click)='delete()' [disabled]="isButtonEnable">Rimuovi</button>
+<span><button mat-flat-button color="accent" (click)='updateQuantita()' [disabled]="isButtonEnable">Aumenta quantità disponibile di una unità</button></span>
+
+
