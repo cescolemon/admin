@@ -41,7 +41,7 @@ export class ShopComponent implements OnInit {
 
   carrello =new Carrello();
 
-
+  isAvailable: boolean= true;
   isButtonEnable:boolean =true;
 
   selection = new SelectionModel<Prodotto>(true, []);
@@ -75,6 +75,10 @@ export class ShopComponent implements OnInit {
 
     this.refresh();
 
+  }
+
+  isThereAny(prodotto : Prodotto){
+    return prodotto.quantita!=0;
   }
 
   refresh(): void {
