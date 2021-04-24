@@ -14,6 +14,8 @@ import { ShopService } from '../services/shop.service';
 export class ManagerComponent implements OnInit {
 
 prodotti: Prodotto[];
+roles: string[];
+isAdmin: boolean;
 
   constructor(private keycloakService: KeycloakService, private sservice : ShopService,private router: Router) {}
 
@@ -21,11 +23,18 @@ prodotti: Prodotto[];
     this.sservice.getProdotti().subscribe(uts => {
       this.prodotti=uts;
   });
+
+  this.roles=this.keycloakService.getUserRoles();
+  for( let x of this.roles){
+    if(x=='ROLE_ADMIN')
+    this.isAdmin=true;
+  }
 }
+
+
 logout() {
   this.keycloakService.logout();
 }
-
 
 goToShop($myParam: string = ''): void {
   const navigationDetails: string[] = ['home/user/shop'];

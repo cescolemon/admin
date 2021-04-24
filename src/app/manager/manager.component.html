@@ -1,6 +1,6 @@
 
-<button mat-flat-button routerLink="admin/utenti" >Admin</button>
-<button mat-flat-button routerLink="user/shop" >User</button>
+<button mat-flat-button routerLink="admin/utenti" *ngIf="isAdmin" >Admin</button>
+<button mat-flat-button routerLink="user/shop" >Entra nello shop</button>
 <button mat-flat-button (click)="logout()" >LogOut</button>
 <mat-card class="spaz"><img mat-card-image src="https://imgur.com/zeids4W.jpg" alt="CalabrianShop" style="width:800px;height:145px;" ></mat-card>
 <mat-card>
