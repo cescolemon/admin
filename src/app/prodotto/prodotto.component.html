@@ -125,6 +125,8 @@
 
 <button mat-flat-button color="accent" (click)='delete()' [disabled]="isButtonEnable">Rimuovi</button>
 <span><button mat-flat-button color="accent" (click)='updateQuantita()' [disabled]="isButtonEnable">Aumenta quantità disponibile di una unità</button></span>
-
+<span>
+<button mat-flat-button color="accent" class="more-styles" (click)= "goToUpdate()"> Modifica prodotto</button>
+</span>
 
 <app-footer></app-footer>

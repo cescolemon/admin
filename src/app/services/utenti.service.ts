@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-
-import { catchError, map, tap} from 'rxjs/operators';
 import { AService } from '../interfaces/aservice';
 import { Utente } from '../model/utente';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -20,8 +19,7 @@ export class UtenteService implements AService{
 
 
   utenti: Utente[];
-  private utenteuri = 'http://localhost:8888/users'
-
+  private utenteuri = `${environment.serverUrl}/users`
   getUtenti() : Observable<Utente[]>{
     return this.http.get<Utente[]>(this.utenteuri);
   }
@@ -30,12 +28,12 @@ export class UtenteService implements AService{
    return this.http.post<Utente>(this.utenteuri + '/add', newUtente, httpOptions);
   }
 
-  constructor(private http: HttpClient) {}
-
   deleteUtente(utid: number): Observable<any> {
     return this.http.delete<Utente>(this.utenteuri+'/'+utid);
   }
 
+
+  constructor(private http: HttpClient) {}
 }
 
 

@@ -10,6 +10,7 @@ import { ShopComponent } from './shop/shop.component';
 import { UserComponent } from './user/user.component';
 import { UtenteComponent } from './utente/utente.component';
 import { OrdiniComponent } from './ordini/ordini.component';
+import { ModificaProdottoComponent } from './modifica-prodotto/modifica-prodotto.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -56,7 +57,13 @@ const routes: Routes = [
            {
             path: 'home/user/orders',
             component: OrdiniComponent
-             }
+             },
+             {
+              path: 'home/admin/modificaprodotto',
+              component: ModificaProdottoComponent,
+              canActivate: [AuthGuard],
+              data: { roles: ['ROLE_ADMIN'] },
+            },
 
 ];
 

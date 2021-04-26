@@ -1,5 +1,6 @@
 import { Observable } from "rxjs";
 import { Prodotto } from "../model/prodotto";
+import { ProdottoComponent } from "../prodotto/prodotto.component";
 
 export interface Pservice {
   getProdotti(): Observable<Prodotto[]>;
@@ -11,4 +12,6 @@ export interface Pservice {
   updateQuantita( prid: number): Observable<any>;
 
   getProdotto(idpr: number): Observable<any>;
+
+  updateProdotto(pr: Prodotto): Observable<any>;
 }

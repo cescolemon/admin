@@ -116,6 +116,14 @@ dc =['select','image','id','nome','categoria','quantita','prezzo','venditore'];
         this.selection.clear();
       }
 
+      goToUpdate($myParam: string = ''): void {
+        const navigationDetails: string[] = ['home/admin/modificaprodotto'];
+        if($myParam.length) {
+          navigationDetails.push($myParam);
+        }
+        this.router.navigate(navigationDetails);
+      }
+
       isButtonEnable:boolean =true;
       selection = new SelectionModel<Prodotto>(true, []);
 

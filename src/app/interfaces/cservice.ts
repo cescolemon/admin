@@ -14,9 +14,4 @@ export interface Cservice {
 
   getProdottiCarrello(): Observable<Carrello>;
 
-  getUtente(): Observable<Utente>;
-
-  getUtenteEmail(): Observable<string>;
-
-  getUtenteName(): Observable<string>;
 }

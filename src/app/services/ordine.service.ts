@@ -33,7 +33,7 @@ export class OrdineService implements Oservice {
   }
 
   getPDF(): Observable<Blob>{
-    return this.http.get(`${environment.serverUrl}/orders/download`, {responseType: 'blob' });
+    return this.http.get(this.orderUrl+'/download', {responseType: 'blob' });
   }
 
   }

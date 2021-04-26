@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap} from 'rxjs/operators';
+import { Observable} from 'rxjs';
 import { Prodotto } from '../model/prodotto';
 import { Pservice } from '../interfaces/pservice';
 import { environment } from 'src/environments/environment';
@@ -17,13 +16,17 @@ const httpOptions = {
 export class ProdottiService implements Pservice {
 
   prodotti: Prodotto[];
-  private prodottouri = 'http://localhost:8888/products'
+  private prodottouri = `${environment.serverUrl}/products`
 
   constructor(private http: HttpClient) { }
 
 
+updateProdotto(pr: Prodotto): Observable<any> {
+    return this.http.post<Prodotto>(this.prodottouri+'/upprod', pr , httpOptions);
+}
+
   getProdotti(): Observable<Prodotto[]> {
-    return this.http.get<Prodotto[]>(`${environment.serverUrl}/products`);
+    return this.http.get<Prodotto[]>(this.prodottouri);
   }
   addProdotto(pr: Prodotto): Observable<any> {
     return this.http.post<Prodotto>(this.prodottouri + '/add', pr, httpOptions);
@@ -33,7 +36,7 @@ export class ProdottiService implements Pservice {
   }
 
   updateQuantita(prid: number): Observable<any> {
-   return this.http.post<Prodotto>(`${environment.serverUrl}/products/`+prid, httpOptions);
+   return this.http.post<Prodotto>(this.prodottouri+'/'+prid, httpOptions);
   }
   getProdotto(idpr: number): Observable<any> {
     return this.http.get<Prodotto>(this.prodottouri+'/'+idpr);

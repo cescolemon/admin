@@ -23,7 +23,7 @@ export class ShopService implements Sservice {
     return this.http.post(this.shopUrl+'/updatecart', cart, httpOptions);
   }
   getProdotti(): Observable<Prodotto[]> {
-    return this.http.get<Prodotto[]>(`${environment.serverUrl}/shop`);
+    return this.http.get<Prodotto[]>(this.shopUrl);
   }
   registraOrdine(indirizzo: string): Observable<any>{
     return this.http.post(this.shopUrl+'/orderreg', indirizzo, httpOptions);
