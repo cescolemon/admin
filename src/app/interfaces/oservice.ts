@@ -14,4 +14,6 @@ export interface Oservice {
   getBolla(or: Ordine): Observable<Bolla>;
 
   getPDF(): Observable<Blob>;
+
+  getOrdiniById(id: number): Observable<Ordine[]>;
 }

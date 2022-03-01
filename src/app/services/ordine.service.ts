@@ -28,6 +28,10 @@ export class OrdineService implements Oservice {
     return this.http.post<Bolla>(this.orderUrl+'/bolla',or, httpOptions)
   }
 
+  getOrdiniById(id: number): Observable<Ordine[]> {
+    return this.http.post<Ordine[]>(this.orderUrl+'/idord', id, httpOptions)
+  }
+
   getProdottiOrdinati(or: Ordine): Observable<OrdineProdotto[]> {
     return this.http.post<OrdineProdotto[]>(this.orderUrl+'/ordered', or, httpOptions);
   }

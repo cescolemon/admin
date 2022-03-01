@@ -1,7 +1,7 @@
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UtenteComponent } from './utente/utente.component';
+import { DialogDataOrdini, UtenteComponent } from './utente/utente.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProdottoComponent } from './prodotto/prodotto.component';
@@ -49,7 +49,8 @@ import { ModificaProdottoComponent } from './modifica-prodotto/modifica-prodotto
     OrdiniComponent,
     DialogDataInd,
     FooterComponent,
-    ModificaProdottoComponent
+    ModificaProdottoComponent,
+    DialogDataOrdini
   ],
   imports: [
     BrowserModule,

@@ -30,6 +30,7 @@ export class UserComponent implements OnInit {
       console.error(err);
     });
   }
+
   logout() {
     this.keycloakService.logout();
   }
@@ -54,7 +55,7 @@ export class UserComponent implements OnInit {
     this.carrelloService.emptyCart().subscribe(
       () => window.location.reload()
     );
-}
+  }
 
 
   goToOrder($myParam: string = ''): void {

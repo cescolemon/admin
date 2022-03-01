@@ -29,7 +29,7 @@ export class OrdiniComponent implements OnInit {
 bolla= new Bolla();
 
 
-  constructor(private oService : OrdineService, private router : Router, private activatedRoute : ActivatedRoute,
+  constructor(private oService : OrdineService,
       private changeDetectorRefs: ChangeDetectorRef,
       public dialog: MatDialog) { }
 
@@ -70,14 +70,8 @@ applyFilter(event: Event) {
 
 
 generaBolla(or: Ordine){
-
-  this.oService.getBolla(or).subscribe(
-
-    bolla => this.bolla = bolla
-
-  );
+  this.oService.getBolla(or).subscribe(bolla => this.bolla = bolla);
   this.openDialog();
-
 }
 
 generaPdf(){
@@ -87,13 +81,10 @@ generaPdf(){
 
 openDialog() {
   this.dialog.open(DialogDataBolla, {
-    data: {
-
-    }
+    data: {}
   });
 }
 }
-
 
 @Component({
   selector: 'dialog-data-bolla',
@@ -105,13 +96,10 @@ export class DialogDataBolla {
   generaPdf(){
     this.oService.getPDF().subscribe( x=> {
       const blob= new Blob([x], {type: 'application/pdf'});
-
       if(window.navigator && window.navigator.msSaveOrOpenBlob){
         window.navigator.msSaveOrOpenBlob(blob);
         return;
       }
-
-
       const data= window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href= data;

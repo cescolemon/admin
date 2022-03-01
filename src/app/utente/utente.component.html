@@ -18,10 +18,16 @@
     </ng-container>
 
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
       <td mat-cell *matCellDef="let row"> {{row.email}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="ordini">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <mat-cell *matCellDef="let row" >
+        <button color="accent" mat-raised-button (click)="callPopUp(row.id)"> Storico ordini</button>
+      </mat-cell>
+    </ng-container>
 
 
 <!-- CHECKBOX COLUMN -->

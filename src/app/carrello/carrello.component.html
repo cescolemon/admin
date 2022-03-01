@@ -1,6 +1,6 @@
 <app-user></app-user>
 
-<div class="mat-elevation-z8">
+<div *ngIf="!isEmpty()" class="mat-elevation-z8">
 
   <table mat-table [dataSource]="dataSource" matSort>
 
@@ -59,7 +59,9 @@
 
   </table>
 
-  <button mat-flat-button color="accent" (click)='rimuoviProdotto()' [disabled]="isButtonEnable">Rimuovi</button>
-  <button mat-button (click)="openDialog()">Conferma Ordine</button>
 </div>
+<h1 *ngIf="isEmpty()" class="stile"> Il tuo carrello è vuoto </h1>
+  <button mat-flat-button *ngIf="!isEmpty()" color="accent" (click)='rimuoviProdotto()' [disabled]="isButtonEnable">Rimuovi</button>
+<button mat-button *ngIf="(isThereAny()&&!isEmpty())"  (click)="openDialog()">Conferma Ordine</button>
+<button mat-button *ngIf="(!isThereAny()&&!isEmpty())"  (click)="openDialogdue()">Conferma Ordine</button>
 <app-footer></app-footer>
